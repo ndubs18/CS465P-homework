@@ -1,7 +1,7 @@
 import "./styles.css";
 
 /** Exercise 01 - Coins **/
-//TODO Need to figure out commas
+//TODO What about values with just dollar ammounts or values with zeros IE: 0.20
 import "./styles.css";
 
 const calculateChange = (input) => {
