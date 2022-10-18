@@ -1,0 +1,19 @@
+{
+  "name": "cs465p-homework",
+  "version": "1.0.0",
+  "description": "In this repository, you will find starter files for the homework assignments for CS 465P/565: Full Stack Web Development. Check the Canvas classroom for more details on each assignment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndubs18/CS465P-homework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndubs18/CS465P-homework/issues"
+  },
+  "homepage": "https://github.com/ndubs18/CS465P-homework#readme"
+}
