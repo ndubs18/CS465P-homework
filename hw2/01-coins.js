@@ -58,6 +58,8 @@ const calculateChange = (input) => {
 
   return output;
 };
+// Sample Test Cases
+console.log(calculateChange(4.62));
 // $4.62 ==> 4 dollars, 2 quarters, 1 dime, 2 pennies
 console.log(calculateChange(9.74));
 // $9.74 ==> 9 dollars, 2 quarters, 2 dimes, 4 pennies
