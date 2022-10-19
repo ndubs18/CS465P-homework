@@ -5,6 +5,20 @@ const url = 'https://restcountries.com/v3.1/all';
 let results = document.getElementById("results");
 let myCountries = [];
 
+
+//function to utilize sort() for array of country objects mycountries
+let sortFunction = (a,b) => {
+
+    if(a.name < b.name) {
+        return -1;
+    }
+    else if(a.name > b.name) {
+        return 1;
+    }
+    else return 0;  
+
+}
+
 let getData = async url => {
 
 try {
@@ -27,16 +41,7 @@ try {
                             "population": country.population.toLocaleString()})
         });
 
-        myCountries = myCountries.sort((a, b) => {
-
-            if(a.name < b.name) {
-                return -1;
-            }
-            else if(a.name > b.name) {
-                return 1;
-            }
-            else return 0;   
-        })
+        myCountries = myCountries.sort(sortFunction);
 
         for(let i = 0; i<myCountries.length; i+=1) {
             
