@@ -1,5 +1,5 @@
 const http = require('http');
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5002;
 
 // http://localhost:5001/welcome should return a status code 200 with a welcome message of your choice in html format
 
@@ -24,6 +24,7 @@ const server = http.createServer((req, res) => {
     'other',
   ];
 
+
   let getRoutes = () => {
     let result = '';
 
@@ -44,6 +45,50 @@ const server = http.createServer((req, res) => {
   }
 
   // Add your code here
+
+  else if (req.url === '/welcome') {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write("welcome");
+    res.end();
+  }
+
+  else if (req.url === '/redirect') {
+    res.writeHead(302,{'Location' : '/redirected'});
+    res.end();
+  }
+
+  else if(req.url === '/redirected') {
+    res.writeHead(200, {'Content-Type' : 'text/plain'});
+    res.write("redirected");
+    res.end();
+  }
+  
+  else if(req.url === '/cache') {
+    res.writeHead(200, {'Content-Type' : 'text/html', 'Cache-Control' : 'max-age = 604800'});
+    res.write('<p>this resource was cached</p>');
+    res.end();
+    
+  }
+  else if(req.url === '/cookie') {
+    res.writeHead(200, {'Conten-Type' : 'text/plain',
+                        'Set-Cookie' : 'Hello=World'});
+    res.write('cookies... yummm');
+    res.end();
+  }
+  else if(req.url === '/check-cookies') {
+    res.writeHead(200, {'Content-Type' : 'text/plain' });
+    if(req.headers.cookie.includes('Hello=World')) {
+      res.write('Yes')
+
+    }
+    else res.write('No');
+    res.end();
+  }
+  else {
+    res.writeHead(404, {'Content-Type': 'text/plain'});
+    res.write(`${res.statusCode}: Page not found.`);
+    res.end();
+  }
 });
 
 server.listen(port, () => {
