@@ -3,7 +3,7 @@ const queryString = require('querystring');
 const { json } = require('stream/consumers');
 
 //const static = require('node-static');
-const port = process.env.PORT || 5002;
+const port = process.env.PORT || 5001;
 
 // http://localhost:5001/form should return a form with input elements for username, email, and submit button
 
