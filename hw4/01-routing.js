@@ -33,14 +33,45 @@ let getRoutes = () => {
 
 app.get('/', (req, res) => {
   let routeResults = getRoutes();
-
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write(`<h1>Exercise 04</h1>`);
   res.write(`<ul> ${routeResults} </ul>`);
   res.end();
 });
 
-app.get('/welcome', (req, res) => {});
+app.get('/welcome', (req, res) => {
+  res.status(200);
+  res.type('html');
+  res.send('<h1>Welcome!</h1>');
+});
+
+app.get('/redirect', (req, res) => {
+  res.status(302);
+  res.redirect('/redirected');
+})
+
+app.get('/redirected', (req, res) => {
+  res.type('html');
+  res.send('<p>You have been redirected</p>');
+})
+
+app.get('/cache', (req, res) => {
+  res.status(200);
+  res.set('Cache-Control', 'Max-age=300');
+
+  res.type('html');
+  res.send('<p>This resource has been cached</p>');
+})
+
+app.get('/cookie', (req, res) => {
+  res.status(200);
+  res.cookie('hello', 'world');
+  res.type('text/plain');
+  res.send('cookies... Yummm')
+
+})
+
+
 
 // Add your code here
 
